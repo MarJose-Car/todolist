@@ -7,7 +7,23 @@
 </ion-header>
 
 <ion-content>
-  <h1>Todos</h1>
+  <ion-list>
+    <ion-list-header>Ma todoList</ion-list-header>
+    <ion-item *ngFor="let todo of todos">
+      <ion-input [(ngModel)]="todo.text"></ion-input>
+      <ion-checkbox color="primary" [checked]="todo.done" [(ngModel)]="todo.done" slot="start"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="danger" (click)="add()"></ion-fab-button>
+  </ion-fab>
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="clear()">
+      <ion-icon name="remove-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  <!-- <h1>Todos</h1>
   	<div *ngFor="let todo of todos" [class.done]=todo.done>
       <input type="checkbox" [(ngModel)]="todo.done">
       <input type="text"[(ngModel)]="todo.text">
@@ -34,4 +50,7 @@
   </ion-header>
 
   <app-explore-container name="TodoList"></app-explore-container> -->
+ 
+<!-- <button (click)="add()">Add</button>
+<button (click)="clear()">Clear</button> -->
 </ion-content>
