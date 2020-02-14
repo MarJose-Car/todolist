@@ -6,7 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+todos = [
+  { done: false, text: 'finish Svelte tutorial' },
+  { done: false, text: 'build an app' },
+  { done: false, text: 'world domination' }
+];
 
+ add() {
+  this.todos = this.todos.concat({ done: false, text: '' });
+}
+ clear() {
+  this.todos= this.todos.filter(t => !t.done);
+// $: remaining = todos.filter(t => !t.done).length;
+}
   constructor() {}
-
 }
